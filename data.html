@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>C-19vaccinePRO.lk</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <style type="text/css">
+
+            .bs-example
+            {
+                margin: 20px;
+            }
+
+        </style>
+
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                 $('[data-toggle="tooltip"]').tooltip();   
+            });
+        </script>
+</head>
+
+<body>
+
+    <div class="menu text-right">
+				
+        <ul>
+            <li>
+                <a href="Home.html">Home</a>
+            </li>
+        </ul>
+        
+    </div>
+
+    <div class="bs-example">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="page-header clearfix">
+
+        <h2 class="pull-left">Register List</h2>
+
+    </div>
+
+
+    <?php
+        include_once 'Connecting.php';
+        $result = mysqli_query($conn,"SELECT * FROM dregister");
+    ?>
+
+    <?php
+    if (mysqli_num_rows($result) > 0) {
+    ?>
+    
+
+<table class='table table-bordered table-striped'>
+    <tr>
+            <th> firstName </th> 
+			<th> niccontact </th> 
+			<th> contact </th> 
+			<th> email </th> 
+            <th> gender </th> 
+			<th> DOB </th> 
+			<th> address</th>
+    </tr>
+
+<?php
+
+$i=0;
+while($row = mysqli_fetch_array($result)) {
+?>
+<tr>
+    <td><?php echo $rows['firstName']; ?></td> 
+    <td><?php echo $rows['niccontact']; ?></td> 
+    <td><?php echo $rows['contact']; ?></td> 
+    <td><?php echo $rows['email']; ?></td> 
+    <td><?php echo $rows['gender']; ?></td> 
+    <td><?php echo $rows['DOB']; ?></td> 
+    <td><?php echo $rows['address']; ?></td>
+
+</tr>
+
+<?php
+$i++;
+}
+?>
+</table>
+<?php
+}
+else
+{
+    echo "No result found";
+}
+?>
+                    </div>
+
+                </div>  
+
+            </div>
+
+        </div>
+
+
+    </body>
+
+</html>
